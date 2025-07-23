@@ -63,8 +63,8 @@ contract EmmaNFTixTest is Test {
     }
 
     function testERC721Metadata() public view {
-        assertEq(ticket.name(), "NFTixTicket");
-        assertEq(ticket.symbol(), "NFTIX");
+        assertEq(ticket.name(), "EmmaNFTix");
+        assertEq(ticket.symbol(), "NFTix");
     }
 
     function testMintPriceIsSet() public view {
@@ -99,7 +99,7 @@ contract EmmaNFTixTest is Test {
         assertEq(isVIP, false);
         assertEq(used, false);
         assertGt(expiry, block.timestamp);
-        assertEq(ticket.tokenURI(tokenId), "ipfs://your-metadata-link");
+        assertEq(ticket.tokenURI(tokenId), "ipfs://bafkreig3oz6qvfxjgbuq56wedqicdfpmza7ep2hmuxtd3k26v4q6femism");
     }
 
     function testMintFailsIfNotOwner() public {
@@ -654,7 +654,7 @@ contract EmmaNFTixTest is Test {
 
         // Try to set URI for a token that doesn't exist
         uint256 nonexistentTokenId = 999;
-        string memory newURI = "ipfs://new-metadata-link";
+        string memory newURI = "ipfs://bafkreig3oz6qvfxjgbuq56wedqicdfpmza7ep2hmuxtd3k26v4q6femism";
 
         // This should revert with "URI set of nonexistent token"
         vm.expectRevert("URI set of nonexistent token");
@@ -672,7 +672,7 @@ contract EmmaNFTixTest is Test {
         uint256 tokenId = 0; // Since it's the first minted ticket
 
         // Expected URI from your mint function
-        string memory expectedURI = "ipfs://your-metadata-link";
+        string memory expectedURI = "ipfs://bafkreig3oz6qvfxjgbuq56wedqicdfpmza7ep2hmuxtd3k26v4q6femism";
 
         // Act & Assert
         string memory actualURI = ticket.tokenURI(tokenId);
